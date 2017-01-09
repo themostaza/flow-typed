@@ -247,6 +247,8 @@ declare class $npm$parse$ParseObject {
 // =========================
 // ParseUser
 // =========================
+export type $npm$parse$ParseAuthData = ?{ [key: string]: mixed }
+
 declare class $npm$parse$ParseUser extends $npm$parse$ParseObject {
   static(attributes: ?$npm$parse$AttributeMap): $npm$parse$ParseUser,
   isCurrent(): boolean,
@@ -274,7 +276,8 @@ declare class $npm$parse$ParseUser extends $npm$parse$ParseObject {
   static allowCustomUserClass(isAllowed: boolean): void,
   static enableRevocableSession(options?: $npm$parse$RequestOptions): void,
   static enableUnsafeCurrentUser(): void,
-  static disableUnsafeCurrentUser(): void
+  static disableUnsafeCurrentUser(): void,
+  static logInWith(provider: string, options?: { authData?: $npm$parse$ParseAuthData }): Promise<$npm$parse$ParseUser>
 }
 
 // =========================
